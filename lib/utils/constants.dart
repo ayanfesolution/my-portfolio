@@ -5,8 +5,6 @@ import 'package:portfolio/utils/app_settings/injector.dart';
 import 'package:portfolio/utils/extension/auto_resize.dart';
 import 'package:portfolio/utils/extension/widget_extention.dart';
 
-
-
 final Color textColor = injector.palette.textColor;
 
 const bool kDebugState = true;
@@ -190,7 +188,7 @@ class CXSpinner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        height: 150..hh(context),
+        // height: 150..hh(context),
         child: Lottie.asset('assets/loader.json').paddingOnly(
           l: 20..ww(context),
         ),

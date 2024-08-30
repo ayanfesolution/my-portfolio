@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:portfolio/screens/portfolio/portfolio.dart';
 import 'package:portfolio/screens/onboarding/splash_screen.dart';
 import 'package:portfolio/utils/app_settings/injector.dart';
 import 'package:portfolio/utils/transition.dart';
@@ -14,16 +15,15 @@ final router = GoRouter(
       builder: (context, state) => const SplashScreen(
           // key: Key('main menu'),
           ),
-      routes: [
-        GoRoute(
-          path: 'onboarding',
-          pageBuilder: (context, state) => buildMyTransition<void>(
-            // key: const ValueKey('onboarding'),
-            color: injector.palette.primaryColor,
-            child: const SplashScreen(),
-          ),
-        ),
-      ],
+      routes: const [],
+    ),
+    GoRoute(
+      path: '/portfolio',
+      pageBuilder: (context, state) => buildMyTransition<void>(
+        // key: const ValueKey('onboarding'),
+        color: injector.palette.primaryColor,
+        child: const MyPortfolio(),
+      ),
     ),
   ],
 );

@@ -27,4 +27,16 @@ class GetTheThemeData extends StateNotifier<ThemeMode> {
       }
     }
   }
+
+  changeThemeMode() {
+    if (state == ThemeMode.dark) {
+      state = ThemeMode.light;
+      injector.quickStorage
+          .storeString(key: ObjectKeys.themeDate, data: 'light');
+    } else {
+      state = ThemeMode.dark;
+      injector.quickStorage
+          .storeString(key: ObjectKeys.themeDate, data: 'dark');
+    }
+  }
 }

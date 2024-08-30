@@ -52,6 +52,9 @@ class MyPortfolioUpdateThemeData {
         color: injector.palette.textColor,
       ),
     ),
+    appBarTheme: AppBarTheme(
+      backgroundColor: injector.palette.pureWhite,
+    ),
 
     brightness: Brightness.light,
     primaryColor: injector.palette.primaryColor,
@@ -113,6 +116,10 @@ class MyPortfolioUpdateThemeData {
     ),
 
     fontFamily: GoogleFonts.inter().fontFamily,
+
+    appBarTheme: AppBarTheme(
+      backgroundColor: injector.palette.darkModeBackground,
+    ),
 
     brightness: Brightness.dark,
     primaryColor: injector.palette.primaryColor,

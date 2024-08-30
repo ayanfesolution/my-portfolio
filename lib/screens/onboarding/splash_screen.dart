@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -28,9 +29,9 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     return Timer(
       const Duration(seconds: 3),
       () async {
-        // context.go(
-        //   '/signUp/successful',
-        // );
+        context.go(
+          '/portfolio',
+        );
       },
     );
   }
