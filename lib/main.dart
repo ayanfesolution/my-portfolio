@@ -1,26 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio/utils/injector.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:portfolio/utils/routes.dart';
+import 'package:portfolio/utils/theme_data.dart';
+import 'providers/system_setup/theme_data_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerStatefulWidget {
   const MyApp({super.key});
+
+  @override
+  ConsumerState<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends ConsumerState<MyApp> {
+  initialAction() async {
+    ref.watch(getTheThemeData.notifier).getTheCurrentSystemTheme(context);
+  }
+
+  @override
+  void didChangeDependencies() {
+    initialAction();
+    setState(() {});
+    super.didChangeDependencies();
+  }
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
+    ThemeMode themeMode = ref.watch(getTheThemeData);
+    // final palette = context.watch<Palette>();
     return MaterialApp.router(
-      title: 'Ayanfe Portfolio',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-        scaffoldBackgroundColor: injector.palette.trueWhite,
-        fontFamily: GoogleFonts.inter().fontFamily,
-      ),
+      title: 'NinjaUpdates',
+      theme: MyPortfolioUpdateThemeData.lightMode,
+      darkTheme: MyPortfolioUpdateThemeData.darkMode,
+      themeMode: themeMode,
       routeInformationProvider: router.routeInformationProvider,
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
