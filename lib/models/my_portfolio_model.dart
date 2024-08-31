@@ -38,8 +38,22 @@ class BioData {
   final String? address;
   final String? profilePictureUrl;
   final String? executiveSummary;
+  final String? quickShortCopy;
+  final String? linkedin;
+  final String? x;
+  final String? instagram;
+  final String? github;
+  final String? facebook;
+  final String? youtube;
+  final String? tiktok;
+  final String? snapchat;
+  final String? pinterest;
+  final String? reddit;
+  final String? medium;
+  final String? website;
+  final String? figma;
 
-  BioData(
+  BioData({
     this.firstName,
     this.lastName,
     this.email,
@@ -47,5 +61,19 @@ class BioData {
     this.address,
     this.profilePictureUrl,
     this.executiveSummary,
-  );
+    this.quickShortCopy,
+    this.linkedin,
+    this.x,
+    this.instagram,
+    this.github,
+    this.facebook,
+    this.youtube,
+    this.tiktok,
+    this.snapchat,
+    this.pinterest,
+    this.reddit,
+    this.medium,
+    this.website,
+    this.figma,
+  });
 }

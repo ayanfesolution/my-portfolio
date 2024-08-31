@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:portfolio/screens/portfolio/all_portfolio.dart';
 import 'package:portfolio/screens/portfolio/portfolio.dart';
 import 'package:portfolio/screens/onboarding/splash_screen.dart';
 import 'package:portfolio/utils/app_settings/injector.dart';
@@ -22,7 +23,7 @@ final router = GoRouter(
       pageBuilder: (context, state) => buildMyTransition<void>(
         // key: const ValueKey('onboarding'),
         color: injector.palette.primaryColor,
-        child: const MyPortfolio(),
+        child: const Portfolio(),
       ),
     ),
   ],
