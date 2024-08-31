@@ -68,102 +68,105 @@ class _PortfolioMobileState extends ConsumerState<PortfolioMobile>
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: wwD(16)),
-              child: Column(
+            introMobile(context, themeMode),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Container introMobile(BuildContext context, ThemeMode themeMode) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: wwD(16)),
+      child: Column(
+        children: [
+          Center(
+            child: SizedBox(
+              height: hhD(300),
+              width: wwD(280),
+              child: Stack(
                 children: [
-                  Center(
-                    child: SizedBox(
-                      height: hhD(300),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: PictureBackgroundMode(
                       width: wwD(280),
-                      child: Stack(
-                        children: [
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: PictureBackgroundMode(
-                              width: wwD(280),
-                              hight: hhD(280),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.topCenter,
-                            child: PictureBackgroundMode(
-                              imageUrl:
-                                  myPortfolioModel.bioData?.profilePictureUrl ??
-                                      '',
-                              width: wwD(280),
-                              hight: hhD(280),
-                            ),
-                          ),
-                        ],
-                      ),
+                      hight: hhD(280),
                     ),
                   ),
-                  Text(
-                    'Hi, I’m ${myPortfolioModel.bioData?.firstName ?? ''}',
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          fontSize: wwD(36),
-                          fontWeight: FontWeight.w600,
-                        ),
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: PictureBackgroundMode(
+                      imageUrl:
+                          myPortfolioModel.bioData?.profilePictureUrl ?? '',
+                      width: wwD(280),
+                      hight: hhD(280),
+                    ),
                   ),
-                  Gap(hhD(6)),
-                  Text(
-                    myPortfolioModel.bioData?.executiveSummary ?? '',
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          fontSize: wwD(16),
-                          fontWeight: FontWeight.w400,
-                        ),
-                  ),
-                  const Gap(48),
-                  AboutQuickInfo(
-                    isItQuickInfo: false,
-                    title: myPortfolioModel.bioData?.address ?? '',
-                    font: wwD(16),
-                  ),
-                  AboutQuickInfo(
-                    isItQuickInfo: true,
-                    title: myPortfolioModel.bioData?.quickShortCopy ?? '',
-                    font: wwD(10),
-                  ),
-                  Gap(hhD(8)),
-                  Row(
-                    children: [
-                      Visibility(
-                        visible:
-                            (myPortfolioModel.bioData?.figma ?? '').isNotEmpty,
-                        child: ImageButtonForActions(
-                          themeMode: themeMode,
-                          lightMode: 'assets/svgs/figmaLight.svg',
-                          darkMode: 'assets/svgs/figma.svg',
-                          urlPath: (myPortfolioModel.bioData?.figma ?? ''),
-                        ),
-                      ),
-                      Visibility(
-                        visible:
-                            (myPortfolioModel.bioData?.github ?? '').isNotEmpty,
-                        child: ImageButtonForActions(
-                          themeMode: themeMode,
-                          lightMode: 'assets/svgs/gitHubLight.svg',
-                          darkMode: 'assets/svgs/gitHub.svg',
-                          urlPath: (myPortfolioModel.bioData?.github ?? ''),
-                        ),
-                      ),
-                      Visibility(
-                        visible: (myPortfolioModel.bioData?.x ?? '').isNotEmpty,
-                        child: ImageButtonForActions(
-                          themeMode: themeMode,
-                          lightMode: 'assets/svgs/twitterDark.svg',
-                          darkMode: 'assets/svgs/twitter.svg',
-                          urlPath: (myPortfolioModel.bioData?.x ?? ''),
-                        ),
-                      ),
-                    ],
-                  )
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+          Text(
+            'Hi, I’m ${myPortfolioModel.bioData?.firstName ?? ''}',
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  fontSize: wwD(36),
+                  fontWeight: FontWeight.w600,
+                ),
+            textAlign: TextAlign.left,
+          ),
+          Gap(hhD(6)),
+          Text(
+            myPortfolioModel.bioData?.executiveSummary ?? '',
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  fontSize: wwD(16),
+                  fontWeight: FontWeight.w400,
+                ),
+            textAlign: TextAlign.left,
+          ),
+          const Gap(48),
+          AboutQuickInfo(
+            isItQuickInfo: false,
+            title: myPortfolioModel.bioData?.address ?? '',
+            font: wwD(10),
+          ),
+          AboutQuickInfo(
+            isItQuickInfo: true,
+            title: myPortfolioModel.bioData?.quickShortCopy ?? '',
+            font: wwD(10),
+          ),
+          Gap(hhD(8)),
+          Row(
+            children: [
+              Visibility(
+                visible: (myPortfolioModel.bioData?.figma ?? '').isNotEmpty,
+                child: ImageButtonForActions(
+                  themeMode: themeMode,
+                  lightMode: 'assets/svgs/figmaLight.svg',
+                  darkMode: 'assets/svgs/figma.svg',
+                  urlPath: (myPortfolioModel.bioData?.figma ?? ''),
+                ),
+              ),
+              Visibility(
+                visible: (myPortfolioModel.bioData?.github ?? '').isNotEmpty,
+                child: ImageButtonForActions(
+                  themeMode: themeMode,
+                  lightMode: 'assets/svgs/gitHubLight.svg',
+                  darkMode: 'assets/svgs/gitHub.svg',
+                  urlPath: (myPortfolioModel.bioData?.github ?? ''),
+                ),
+              ),
+              Visibility(
+                visible: (myPortfolioModel.bioData?.x ?? '').isNotEmpty,
+                child: ImageButtonForActions(
+                  themeMode: themeMode,
+                  lightMode: 'assets/svgs/twitterDark.svg',
+                  darkMode: 'assets/svgs/twitter.svg',
+                  urlPath: (myPortfolioModel.bioData?.x ?? ''),
+                ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
